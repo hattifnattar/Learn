@@ -30,20 +30,13 @@ public class DrawLotsMachine {
   private Set<String> winners;
   private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
   
-  public DrawLotsMachine(){
-    setPathToFile();
-    setAmountOfWinners();
-    readCSVfromFile();
-    parseOutFromCSV();
-    randomWinners();
-  }
-  private void setPathToFile(){
+  public void setPathToFile(){
     System.out.println("Please set path to the CSV file: ");
     Scanner scanner = new Scanner(System.in);
     path = scanner.nextLine();
     //path = "D:\\bin\\22_zadanie_maszyna_losujaca_input.csv";
   }
-  private void setAmountOfWinners(){
+  public void setAmountOfWinners(){
     System.out.println("Please set amount of winners");
     Scanner scanner = new Scanner(System.in);
     amountOfWinners = scanner.nextInt();
@@ -71,16 +64,17 @@ public class DrawLotsMachine {
         }
     return fileContentList;
   }
-  private List<String> parseOutFromCSV(){
+  private List<String> parseOutFromCSV() throws IndexOutOfBoundsException{
+    List<String> DataFromFile = readCSVfromFile();
     Map<String, String> NameEmailMap = new HashMap<>();
-    int amountOfFieldsInOneCSVLine = readCSVfromFile().get(0).replaceAll("[^,]", "").length()+1;
+    int amountOfFieldsInOneCSVLine = DataFromFile.get(0).replaceAll("[^,]", "").length()+1;
     int namePosition = 1;
     int emailPosition = 2;
     int recommendPosition = 4;
     String[] splittedArray = new String[amountOfFieldsInOneCSVLine];
     List<String> poolList = new ArrayList<>();
     try {
-      for (Iterator<String> i = readCSVfromFile().iterator(); i.hasNext();) {
+      for (Iterator<String> i = DataFromFile.iterator(); i.hasNext();) {
         String item = i.next();
         splittedArray = item.split(",");
         String name = splittedArray[namePosition].replace("\"", "");
@@ -108,10 +102,19 @@ public class DrawLotsMachine {
     }
   }
   public void showWinners(){
-    System.out.println("Today the Winner(s) is(are): ");
-    for(Iterator<String> i = winners.iterator(); i.hasNext();) {
-      String item = i.next();
-      System.out.println(item);
+    try {
+      parseOutFromCSV();
+      randomWinners();
+      
+      System.out.println("Today the Winner(s) is(are): ");
+      for(Iterator<String> i = winners.iterator(); i.hasNext();) {
+        String item = i.next();
+        System.out.println(item);
+      }
+    } catch (IndexOutOfBoundsException e) {
+      ;
     }
+    
+    
   }
 }

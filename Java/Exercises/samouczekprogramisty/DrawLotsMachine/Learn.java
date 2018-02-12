@@ -19,6 +19,8 @@ public class Learn {
   public static void main(String[] args) {
     
       DrawLotsMachine dlm = new DrawLotsMachine();
+      dlm.setPathToFile();
+      dlm.setAmountOfWinners();
       dlm.showWinners();
    
   }
