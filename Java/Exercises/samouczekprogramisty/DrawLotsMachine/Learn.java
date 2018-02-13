@@ -17,11 +17,13 @@ public class Learn {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    
-      DrawLotsMachine dlm = new DrawLotsMachine();
-      dlm.setPathToFile();
-      dlm.setAmountOfWinners();
-      dlm.showWinners();
-   
+
+    Scanner scanner = new Scanner(System.in);
+    DrawLotsMachine dlm = new DrawLotsMachine();
+    System.out.print("Please set path to the CSV file: ");
+    dlm.setPathToFile(scanner.nextLine());
+    System.out.print("Please set amount of winners: ");
+    dlm.setAmountOfWinners(scanner.nextInt());
+    dlm.showWinners();
   }
 }
