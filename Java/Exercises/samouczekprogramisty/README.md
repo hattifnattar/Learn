@@ -10,4 +10,7 @@ All exercises are from [samouczekprogramisty](http://www.samouczekprogramisty.pl
  *******  
 *********  
 </pre>
-## 2.
+## 2. Draw Lots Machine
+- **directory**: DrawLotsMachine
+- **description**: print winners of draw lots machine whose are listed in the csv file. You should get two arguments from user: 1st set path to file, 2nd set amount of winners in this lottery.
+## 3.
