@@ -88,7 +88,6 @@ public class Board {
   public final static void clearConsole() {
     try {
       final String os = System.getProperty("os.name");
-
       if (os.contains("Windows")) {
         Runtime.getRuntime().exec("cmd /c cls");
       } else {

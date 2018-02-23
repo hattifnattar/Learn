@@ -87,5 +87,4 @@ public class Cell {
   public CellState getState() {
     return state;
   }
-
 }

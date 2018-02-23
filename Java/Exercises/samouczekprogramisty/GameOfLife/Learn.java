@@ -18,7 +18,7 @@ public class Learn {
    */
   public static void main(String[] args) {
 
-    Board board = new Board(4, Cell.live(1, 0), Cell.live(1, 1), Cell.live(1,2));
+    Board board = new Board(4, Cell.live(1, 0), Cell.live(1, 1), Cell.live(1, 2));
     board.playGame();
   }
 }
